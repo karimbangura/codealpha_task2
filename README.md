@@ -27,7 +27,7 @@ It does the four main operations (+, −, ×, ÷), shows the result live on the 
 
 ## Testing
 
-I tested the calculator logic with 33 test cases, covering:
+I tested the calculator logic with many test cases, covering:
 
 - all four operations
 - floating point rounding
