@@ -6,7 +6,6 @@ A basic calculator I built with plain HTML, CSS and JavaScript. No libraries, no
 It does the four main operations (+, −, ×, ÷), shows the result live on the screen, and works with both the mouse and the keyboard.
 
 
-
 ## What it does
 
 - Addition, subtraction, multiplication and division
@@ -51,10 +50,6 @@ Built for the CodeAlpha front-end task "Build a Calculator".
 - [x] Bonus: keyboard support
 - [x] Bonus: styling enhancements
 
-## Customizing
-
-- **Colors:** change the variables at the top of `style.css` (`--bg`, `--accent` and so on).
-- **Digit limit:** change `MAX_DIGITS` at the top of `script.js`.
 
 ## Ideas for later
 
@@ -62,7 +57,3 @@ Built for the CodeAlpha front-end task "Build a Calculator".
 - Proper order of operations (BODMAS)
 - Square root, powers and other scientific buttons
 - A light theme toggle
-
-## Author
-
-Built by Bangura.
