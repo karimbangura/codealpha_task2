@@ -6,17 +6,17 @@
 
   const MAX_DIGITS = 15;
 
-  /* ---------- state ---------- */
+  
   const state = {
-    current: '0',     // the number being typed (or the last result)
-    previous: null,   // the first operand, waiting for the second one
-    operator: null,   // + − × ÷
-    overwrite: false, // true when the next digit should start a new number
-    error: null,      // error message, or null
-    expression: ''    // small line above the result
+    current: '0',     
+    previous: null,   
+    operator: null,   
+    overwrite: false, 
+    error: null,      
+    expression: ''    
   };
 
-  /* ---------- math ---------- */
+  
   function compute(a, op, b) {
     const x = parseFloat(a);
     const y = parseFloat(b);
@@ -29,7 +29,7 @@
     }
   }
 
-  // Fix floating point noise (0.1 + 0.2 -> 0.3) and avoid huge/tiny exponents in the UI
+  
   function toNumberString(n) {
     if (n === null || !isFinite(n)) return null;
     const r = parseFloat(n.toPrecision(12));
@@ -40,7 +40,7 @@
     return String(r);
   }
 
-  /* ---------- formatting ---------- */
+ 
   function format(str) {
     if (str.includes('e')) return str;
     const negative = str.startsWith('-');
@@ -63,14 +63,14 @@
     }
     expressionEl.textContent = state.expression;
 
-    // highlight the operator that is waiting for the next number
+   
     opButtons.forEach(btn => {
       const active = state.operator === btn.dataset.value && state.overwrite && !state.error;
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
   }
 
-  /* ---------- actions ---------- */
+  
   function reset() {
     state.current = '0';
     state.previous = null;
@@ -85,7 +85,7 @@
     if (state.overwrite) {
       state.current = d;
       state.overwrite = false;
-      // starting a fresh number after "=" also clears the old expression
+     
       if (!state.operator) state.expression = '';
     } else if (state.current === '0') {
       state.current = d;
