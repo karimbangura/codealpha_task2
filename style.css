@@ -28,7 +28,7 @@ body {
   line-height: 1.4;
 }
 
-/* ---------- Calculator body ---------- */
+
 .calc {
   width: min(100%, 380px);
   padding: clamp(1rem, 4vw, 1.5rem);
@@ -46,7 +46,7 @@ body {
   color: var(--muted);
 }
 
-/* ---------- Display ---------- */
+
 .screen {
   min-height: 7.5rem;
   display: flex;
@@ -83,12 +83,12 @@ body {
   transition: font-size .2s var(--ease), color .2s var(--ease);
 }
 
-/* the script shrinks long numbers so they always fit */
+
 .result[data-size="md"] { font-size: 2.3rem; }
 .result[data-size="sm"] { font-size: 1.7rem; }
 .result.is-error { color: var(--accent); font-size: 1.5rem; }
 
-/* ---------- Keys ---------- */
+
 .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -118,10 +118,10 @@ body {
 .key:active,
 .key.is-pressed { transform: scale(.94); border-color: var(--accent); }
 
-/* function keys: AC, delete, %, ± */
+
 .key.fn { background: var(--line); }
 
-/* operator keys: outlined, accent colored text */
+
 .key.op {
   background: transparent;
   color: var(--accent);
@@ -131,13 +131,13 @@ body {
 
 .key.op:hover { background: rgba(255, 207, 92, .15); }
 
-/* the operator waiting for the next number stays highlighted */
+
 .key.op[aria-pressed="true"] {
   background: var(--accent);
   color: var(--on-accent);
 }
 
-/* equals key */
+
 .key.equals {
   background: var(--accent);
   color: var(--on-accent);
@@ -159,12 +159,12 @@ body {
   text-align: center;
 }
 
-/* touch screens have no physical keyboard, so hide the hint */
+
 @media (hover: none) and (pointer: coarse) {
   .hint { display: none; }
 }
 
-/* ---------- Small screens ---------- */
+
 @media (max-width: 380px) {
   .keys { gap: .5rem; }
   .key { min-height: 3.2rem; font-size: 1.25rem; }
@@ -173,7 +173,7 @@ body {
   .result[data-size="sm"] { font-size: 1.5rem; }
 }
 
-/* short landscape phones: shrink vertical space */
+
 @media (max-height: 560px) {
   body { place-items: start center; }
   .screen { min-height: 5.5rem; }
