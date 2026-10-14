@@ -5,7 +5,7 @@ A basic calculator I built with plain HTML, CSS and JavaScript. No libraries, no
 
 It does the four main operations (+, −, ×, ÷), shows the result live on the screen, and works with both the mouse and the keyboard.
 
-
+![alt text](image.png)
 ## What it does
 
 - Addition, subtraction, multiplication and division
