@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculator</title>
+  <meta property="og:type" content="webpage">
+  <meta property="og:title" content="calculator"
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
@@ -20,7 +22,6 @@
       <div class="result" id="result" role="status" aria-live="polite">0</div>
     </section>
 
-    <!-- Buttons -->
     <div class="keys" id="keys">
       <button type="button" class="key fn"  data-action="clear" aria-label="All clear">AC</button>
       <button type="button" class="key fn"  data-action="backspace" aria-label="Delete last entry">&#9003;</button>
@@ -48,7 +49,7 @@
       <button type="button" class="key equals" data-action="equals" aria-label="Equals">=</button>
     </div>
 
-    <p class="hint">Keyboard: 0–9, + − * /, Enter for =, Backspace to delete, Esc to clear.</p>
+    <p class="hint">You can use your keyboard number, arithmetic operator and press esc to clear. </p>
   </main>
 
   <script src="script.js"></script>
