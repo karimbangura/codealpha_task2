@@ -150,7 +150,7 @@
 
   function backspace() {
     if (state.error) { reset(); return; }
-    if (state.overwrite) return;       // do not edit a finished result
+    if (state.overwrite) return;      
     state.current = state.current.slice(0, -1);
     if (state.current === '' || state.current === '-') state.current = '0';
   }
@@ -159,7 +159,7 @@
     if (state.error) return;
     const cur = parseFloat(state.current);
     let value;
-    // 200 + 10 %  ->  10% of 200 = 20
+    
     if (state.previous !== null && (state.operator === '+' || state.operator === '−')) {
       value = parseFloat(state.previous) * cur / 100;
     } else {
@@ -176,7 +176,7 @@
       : '-' + state.current;
   }
 
-  /* ---------- dispatcher ---------- */
+  
   function press(action, value) {
     switch (action) {
       case 'digit':     inputDigit(value); break;
@@ -191,14 +191,14 @@
     render();
   }
 
-  /* ---------- mouse / touch ---------- */
+  
   keysEl.addEventListener('click', e => {
     const btn = e.target.closest('.key');
     if (!btn) return;
     press(btn.dataset.action, btn.dataset.value);
   });
 
-  /* ---------- keyboard support ---------- */
+  
   const OPERATOR_KEYS = { '+': '+', '-': '−', '*': '×', 'x': '×', 'X': '×', '/': '÷' };
 
   function flash(selector) {
@@ -209,7 +209,7 @@
   }
 
   document.addEventListener('keydown', e => {
-    if (e.ctrlKey || e.metaKey || e.altKey) return;   // keep browser shortcuts working
+    if (e.ctrlKey || e.metaKey || e.altKey) return;   
     const k = e.key;
 
     if (/^[0-9]$/.test(k)) {
@@ -219,12 +219,12 @@
       press('dot');
       flash('[data-action="dot"]');
     } else if (k in OPERATOR_KEYS) {
-      e.preventDefault();                              // stops "/" opening quick find
+      e.preventDefault();  
       const op = OPERATOR_KEYS[k];
       press('operator', op);
       flash(`[data-action="operator"][data-value="${op}"]`);
     } else if (k === 'Enter' || k === '=') {
-      e.preventDefault();                              // stops Enter re-clicking a focused key
+      e.preventDefault();                              
       press('equals');
       flash('[data-action="equals"]');
     } else if (k === 'Backspace') {
