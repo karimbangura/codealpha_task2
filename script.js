@@ -113,14 +113,12 @@
   function chooseOperator(op) {
     if (state.error) return;
 
-    // pressing two operators in a row just swaps the operator
     if (state.operator && state.overwrite) {
       state.operator = op;
       state.expression = `${format(state.previous)} ${op}`;
       return;
     }
 
-    // chaining: 5 + 3 × ... evaluates 5 + 3 first
     if (state.operator && state.previous !== null) {
       const result = toNumberString(compute(state.previous, state.operator, state.current));
       if (result === null) { setError('Cannot divide by zero'); return; }
