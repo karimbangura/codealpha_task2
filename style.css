@@ -1,0 +1,185 @@
+:root {
+  --bg: #0f1724;
+  --surface: #172234;
+  --surface-2: #24344f;
+  --line: #4a5b78;
+  --text: #f6f8fb;
+  --muted: #c9d2e0;
+  --accent: #ffcf5c;
+  --on-accent: #10141c;
+  --radius: 16px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+/* ---------- Calculator body ---------- */
+.calc {
+  width: min(100%, 380px);
+  padding: clamp(1rem, 4vw, 1.5rem);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: calc(var(--radius) + 8px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+}
+
+.title {
+  margin: 0 0 .9rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  color: var(--muted);
+}
+
+/* ---------- Display ---------- */
+.screen {
+  min-height: 7.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: .25rem;
+  margin-bottom: 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-align: right;
+}
+
+.expression {
+  min-height: 1.4rem;
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.result {
+  max-width: 100%;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  transition: font-size .2s var(--ease), color .2s var(--ease);
+}
+
+/* the script shrinks long numbers so they always fit */
+.result[data-size="md"] { font-size: 2.3rem; }
+.result[data-size="sm"] { font-size: 1.7rem; }
+.result.is-error { color: var(--accent); font-size: 1.5rem; }
+
+/* ---------- Keys ---------- */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .65rem;
+}
+
+.key {
+  min-height: 3.6rem;
+  padding: 0;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: background .2s var(--ease), color .2s var(--ease),
+              border-color .2s var(--ease), transform .15s var(--ease);
+}
+
+.key:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.key:active,
+.key.is-pressed { transform: scale(.94); border-color: var(--accent); }
+
+/* function keys: AC, delete, %, ± */
+.key.fn { background: var(--line); }
+
+/* operator keys: outlined, accent colored text */
+.key.op {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  font-size: 1.7rem;
+}
+
+.key.op:hover { background: rgba(255, 207, 92, .15); }
+
+/* the operator waiting for the next number stays highlighted */
+.key.op[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* equals key */
+.key.equals {
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.key.equals:hover { background: #ffdc85; border-color: #ffdc85; }
+
+:where(button):focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.hint {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: .85rem;
+  text-align: center;
+}
+
+/* touch screens have no physical keyboard, so hide the hint */
+@media (hover: none) and (pointer: coarse) {
+  .hint { display: none; }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 380px) {
+  .keys { gap: .5rem; }
+  .key { min-height: 3.2rem; font-size: 1.25rem; }
+  .result { font-size: 2.5rem; }
+  .result[data-size="md"] { font-size: 2rem; }
+  .result[data-size="sm"] { font-size: 1.5rem; }
+}
+
+/* short landscape phones: shrink vertical space */
+@media (max-height: 560px) {
+  body { place-items: start center; }
+  .screen { min-height: 5.5rem; }
+  .key { min-height: 2.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}

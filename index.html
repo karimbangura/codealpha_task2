@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="calc" aria-label="Calculator">
+    <h1 class="title">Calculator</h1>
+
+    
+    <section class="screen" aria-label="Display">
+      <div class="expression" id="expression"></div>
+      <div class="result" id="result" role="status" aria-live="polite">0</div>
+    </section>
+
+    <!-- Buttons -->
+    <div class="keys" id="keys">
+      <button type="button" class="key fn"  data-action="clear" aria-label="All clear">AC</button>
+      <button type="button" class="key fn"  data-action="backspace" aria-label="Delete last entry">&#9003;</button>
+      <button type="button" class="key fn"  data-action="percent" aria-label="Percent">%</button>
+      <button type="button" class="key op"  data-action="operator" data-value="÷" aria-label="Divide">&divide;</button>
+
+      <button type="button" class="key" data-action="digit" data-value="7">7</button>
+      <button type="button" class="key" data-action="digit" data-value="8">8</button>
+      <button type="button" class="key" data-action="digit" data-value="9">9</button>
+      <button type="button" class="key op" data-action="operator" data-value="×" aria-label="Multiply">&times;</button>
+
+      <button type="button" class="key" data-action="digit" data-value="4">4</button>
+      <button type="button" class="key" data-action="digit" data-value="5">5</button>
+      <button type="button" class="key" data-action="digit" data-value="6">6</button>
+      <button type="button" class="key op" data-action="operator" data-value="−" aria-label="Subtract">&minus;</button>
+
+      <button type="button" class="key" data-action="digit" data-value="1">1</button>
+      <button type="button" class="key" data-action="digit" data-value="2">2</button>
+      <button type="button" class="key" data-action="digit" data-value="3">3</button>
+      <button type="button" class="key op" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+      <button type="button" class="key fn" data-action="negate" aria-label="Toggle positive or negative">&plusmn;</button>
+      <button type="button" class="key" data-action="digit" data-value="0">0</button>
+      <button type="button" class="key" data-action="dot" aria-label="Decimal point">.</button>
+      <button type="button" class="key equals" data-action="equals" aria-label="Equals">=</button>
+    </div>
+
+    <p class="hint">Keyboard: 0–9, + − * /, Enter for =, Backspace to delete, Esc to clear.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
